@@ -10,7 +10,7 @@ import Insurance from "./routes/insurance.js";
 import Profile from "./routes/profile.js";
 import mongoose from "mongoose";
 
-const port = 3000;
+const port = 5000;
 const app = express();
 dotenv.config();
 
@@ -26,14 +26,10 @@ const connectDB = async () => {
   }
 };
 
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "http://localhost:3001",
-    credentials: true,
-  }),
-);
 
 app.use("/user", User);
 app.use("/doctor", Doctor);

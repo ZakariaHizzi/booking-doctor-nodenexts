@@ -64,6 +64,7 @@ function AppointmentForm() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     fullName: "", dob: "", reason: "", firstVisit: false,
     insuranceProvider: "", memberId: "", groupNumber: "",
@@ -108,7 +109,11 @@ function AppointmentForm() {
   };
 
   async function handleBook() {
-    if (!doctor || !user) return;
+    if (!doctor || !user) {
+      setError("Doctor or user information is missing. Please try again.");
+      return;
+    }
+    setError("");
     setSubmitting(true);
 
     try {
@@ -125,6 +130,7 @@ function AppointmentForm() {
       setConfirmed(true);
     } catch (err) {
       console.error("Booking failed:", err);
+      setError(err.message || "Booking failed. Please try again.");
     }
     setSubmitting(false);
   }
@@ -338,6 +344,14 @@ function AppointmentForm() {
                   </svg>
                   <p className="text-sm text-on-surface-variant">By clicking &quot;Book Now,&quot; you agree to our Terms of Service and Privacy Policy.</p>
                 </div>
+                {error && (
+                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3 mb-4">
+                    <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p className="text-sm text-red-600">{error}</p>
+                  </div>
+                )}
                 <div className="flex items-center justify-between">
                   <button onClick={() => setStep(3)} className="text-on-surface-variant text-sm font-medium hover:text-on-surface inline-flex items-center gap-1">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

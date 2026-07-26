@@ -1,5 +1,5 @@
 async function apiFetch(path, options = {}) {
-  const res = await fetch(`http://localhost:3000${path}`, {
+  const res = await fetch(`/api${path}`, {
     ...options,
     credentials: "include",
     headers: {
@@ -7,7 +7,13 @@ async function apiFetch(path, options = {}) {
       ...options.headers,
     },
   });
-  const data = await res.json();
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error(text || `Request failed with status ${res.status}`);
+  }
   if (!res.ok) {
     throw new Error(data.message || "API request failed");
   }
