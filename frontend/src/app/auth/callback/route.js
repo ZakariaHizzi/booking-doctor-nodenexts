@@ -13,12 +13,12 @@ export async function GET(request) {
   }
 
   // التوجيه إلى الصفحة الرئيسية بعد نجاح الدخول (يمكنك تغيير /dashboard للـ Route المناسب لك)
-  const response = NextResponse.redirect(`${origin}/dashboard`);
+  const response = NextResponse.redirect(`${origin});
 
   // حفظ التوكن في الكوكيز ليعمل في Vercel
   response.cookies.set("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: "production",
     sameSite: "lax",
     path: "/",
   });
