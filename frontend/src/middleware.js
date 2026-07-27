@@ -14,7 +14,7 @@ const publicRoutes = new Set([
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
 
- if (pathname.startsWith("/api/") {
+if (pathname.startsWith("/api/") || pathname.startsWith("/auth/callback")) {
   return NextResponse.next();
 }
 
