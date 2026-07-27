@@ -14,8 +14,8 @@ export async function GET(request) {
   // حفظ التوكن ليقرأه Next.js والـ Middleware
   response.cookies.set("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: true,
+    sameSite: 'none',
     path: "/",
   });
 
