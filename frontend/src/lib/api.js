@@ -27,10 +27,10 @@ export async function signIn(email, password) {
   });
 }
 
-export async function register(full_name, email, password, role = "patient") {
+export async function register(full_name, email, password) {
   return apiFetch("/user/auth/register", {
     method: "POST",
-    body: JSON.stringify({ full_name, email, password, role }),
+    body: JSON.stringify({ full_name, email, password}),
   });
 }
 
