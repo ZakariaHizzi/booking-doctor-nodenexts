@@ -28,7 +28,7 @@ const connectDB = async () => {
 
 app.use(
   cors({
-    origin: ["https://fullstack-doctor-app-seven.vercel.app/"],
+    origin: ["https://fullstack-booking-doctor.vercel.app"],
     credentials: true,
   }),
 );
