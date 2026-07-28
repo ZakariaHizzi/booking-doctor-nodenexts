@@ -7,9 +7,9 @@ import auth from "../auth/middleware.js";
 const router = express.Router();
 
 const COOKIE_OPTIONS = {
-  httpOnly: false,
+  httpOnly: true,
   secure: process.env.NODE_ENV,
-  sameSite: "none",
+  sameSite: "lax",
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
 };

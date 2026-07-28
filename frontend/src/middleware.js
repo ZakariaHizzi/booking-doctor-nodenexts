@@ -13,9 +13,9 @@ const publicRoutes = new Set([
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
 
-if (pathname.startsWith("/api/")) {
-  return NextResponse.next();
-}
+  if (pathname.startsWith("/api/") || pathname.startsWith("/auth/callback")) {
+    return NextResponse.next();
+  }
 
   const token = request.cookies.get("token")?.value;
 
