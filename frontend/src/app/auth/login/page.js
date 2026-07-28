@@ -81,9 +81,10 @@ function LoginForm() {
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
         type="submit"
+        disabled={loading}
         className="w-full py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50"
       >
-        Sign in
+        {loading ? "Signing in..." : "Sign in"}
       </motion.button>
 
       <p className="text-center text-sm text-on-surface-variant">
