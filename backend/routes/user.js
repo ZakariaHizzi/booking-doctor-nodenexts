@@ -104,7 +104,7 @@ router.get("/me", auth, async (req, res) => {
 });
 
 router.post("/signout", (req, res) => {
-  res.clearCookie("token", { path: "/" });
+  res.clearCookie("token", COOKIE_OPTIONS);
   res.json({ message: "Signed out successfully" });
 });
 
