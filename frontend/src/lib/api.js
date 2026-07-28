@@ -1,6 +1,5 @@
 async function apiFetch(path, options = {}) {
-  const base = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
-  const res = await fetch(`${base}${path}`, {
+  const res = await fetch(`/api${path}`, {
     ...options,
     credentials: "include",
     headers: {
