@@ -1,5 +1,5 @@
 async function apiFetch(path, options = {}) {
-  const res = await fetch(`https://backend-booking-doctor.vercel.app{path}`, {
+  const res = await fetch(`https://backend-booking-doctor.vercel.app${path}`, {
     ...options,
     credentials: "include",
     headers: {
