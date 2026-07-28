@@ -50,18 +50,28 @@ function LoginForm() {
       )}
 
       <div>
-        <label className="block text-sm font-medium text-on-surface mb-1.5">Email</label>
+        <label className="block text-sm font-medium text-on-surface mb-1.5">
+          Email
+        </label>
         <input
-          type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full px-4 py-2.5 rounded-lg border border-outline-variant/40 bg-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-on-surface"
           placeholder="you@example.com"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-on-surface mb-1.5">Password</label>
+        <label className="block text-sm font-medium text-on-surface mb-1.5">
+          Password
+        </label>
         <input
-          type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           className="w-full px-4 py-2.5 rounded-lg border border-outline-variant/40 bg-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-on-surface"
           placeholder="Enter your password"
         />
@@ -78,7 +88,10 @@ function LoginForm() {
 
       <p className="text-center text-sm text-on-surface-variant">
         Don&apos;t have an account?{" "}
-        <Link href="/auth/register" className="text-primary font-medium hover:underline">
+        <Link
+          href="/auth/register"
+          className="text-primary font-medium hover:underline"
+        >
           Register
         </Link>
       </p>
@@ -96,12 +109,24 @@ export default function LoginPage() {
     >
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-2xl font-bold text-primary">HealSync</Link>
-          <h1 className="text-2xl font-bold text-on-surface mt-4">Welcome back</h1>
-          <p className="text-on-surface-variant mt-1">Sign in to your account</p>
+          <Link href="/" className="text-2xl font-bold text-primary">
+            HealSync
+          </Link>
+          <h1 className="text-2xl font-bold text-on-surface mt-4">
+            Welcome back
+          </h1>
+          <p className="text-on-surface-variant mt-1">
+            Sign in to your account
+          </p>
         </div>
 
-        <Suspense fallback={<div className="text-center py-8 text-on-surface-variant">Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="text-center py-8 text-on-surface-variant">
+              Loading...
+            </div>
+          }
+        >
           <LoginForm />
         </Suspense>
       </div>

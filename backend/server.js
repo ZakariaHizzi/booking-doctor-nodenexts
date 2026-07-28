@@ -16,9 +16,7 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb://zakaria:zakisisi@ac-kml8sgp-shard-00-00.jyzbhfh.mongodb.net:27017,ac-kml8sgp-shard-00-01.jyzbhfh.mongodb.net:27017,ac-kml8sgp-shard-00-02.jyzbhfh.mongodb.net:27017/?ssl=true&replicaSet=atlas-txsgk3-shard-0&authSource=admin&appName=zakaria",
-    );
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("MongoDB connection failed:", error.message);
@@ -28,7 +26,7 @@ const connectDB = async () => {
 
 app.use(
   cors({
-    origin: ["https://fullstack-booking-doctor.vercel.app"],
+    origin: [process.env.CLIENT_URL],
     credentials: true,
   }),
 );
