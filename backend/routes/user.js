@@ -9,9 +9,7 @@ const router = express.Router();
 const COOKIE_OPTIONS = {
   httpOnly: true,
   secure: process.env.NODE_ENV,
-  sameSite: "lax",
-   maxAge: 7 * 24 * 60 * 60 * 1000,
-  path: "/",
+  sameSite: "none",
 };
 
 function setAuthCookie(res, token) {
