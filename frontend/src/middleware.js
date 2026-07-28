@@ -13,13 +13,13 @@ const publicRoutes = new Set([
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
 
-if (pathname.startsWith("/api/") || pathname.startsWith("/auth/callback")) {
+if (pathname.startsWith("/api/")) {
   return NextResponse.next();
 }
 
   const token = request.cookies.get("token")?.value;
 
-  const isPublicRoute = publicRoutes.has(pathname) 
+  const isPublicRoute = publicRoutes.has(pathname) || pathname.startsWith("/doctors/");
 
   if (!token && !isPublicRoute) {
     const url = request.nextUrl.clone();
