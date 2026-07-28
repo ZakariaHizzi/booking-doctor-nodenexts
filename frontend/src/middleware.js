@@ -30,7 +30,7 @@ export async function middleware(request) {
 
   if (token && pathname.startsWith("/auth/")) {
     const url = request.nextUrl.clone();
-    url.pathname = "/dashboard";
+    url.pathname = "/";
     return NextResponse.redirect(url);
   }
 

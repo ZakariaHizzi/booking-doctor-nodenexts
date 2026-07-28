@@ -7,7 +7,6 @@ import Doctor from "./routes/doctor.js";
 import appointment from "./routes/appointment.js";
 import Specialty from "./routes/specialty.js";
 import Insurance from "./routes/insurance.js";
-import Profile from "./routes/profile.js";
 import mongoose from "mongoose";
 
 const port = 5000;
@@ -26,7 +25,7 @@ const connectDB = async () => {
 
 app.use(
   cors({
-    origin: ["https://booking-doctor-nodenexts.vercel.app"],
+    origin: [process.env.CLIENT_URL],
     credentials: true,
   }),
 );
@@ -39,7 +38,6 @@ app.use("/doctor", Doctor);
 app.use("/appointment", appointment);
 app.use("/specialty", Specialty);
 app.use("/insurance", Insurance);
-app.use("/profile", Profile);
 
 connectDB().then(() => {
   app.listen(port, () => {

@@ -1,5 +1,5 @@
 async function apiFetch(path, options = {}) {
-  const res = await fetch(`https://backend-booking-doctor.vercel.app${path}`, {
+  const res = await fetch(`http://localhost:5000${path}`, {
     ...options,
     credentials: "include",
     headers: {
@@ -30,7 +30,7 @@ export async function signIn(email, password) {
 export async function register(full_name, email, password) {
   return apiFetch("/user/auth/register", {
     method: "POST",
-    body: JSON.stringify({ full_name, email, password}),
+    body: JSON.stringify({ full_name, email, password }),
   });
 }
 
@@ -40,10 +40,6 @@ export async function signOut() {
 
 export async function getMe() {
   return apiFetch("/user/me");
-}
-
-export async function getProfile(id) {
-  return apiFetch(`/profile/${id}`);
 }
 
 export async function getDoctors() {

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { getMe, getProfile, getInsuranceProviders, getDoctor, createAppointment } from "@/lib/api";
+import { getMe, getInsuranceProviders, getDoctor, createAppointment } from "@/lib/api";
 import FadeIn from "@/components/FadeIn";
 
 const steps = ["Schedule", "Details", "Insurance", "Confirm"];
@@ -83,10 +83,7 @@ function AppointmentForm() {
         }
         setUser(me);
 
-        const profile = await getProfile(me._id);
-        if (profile) {
-          setForm((f) => ({ ...f, fullName: profile.full_name || "" }));
-        }
+        setForm((f) => ({ ...f, fullName: me.full_name || "" }));
 
         const insurance = await getInsuranceProviders();
         setInsuranceProviders(insurance || []);

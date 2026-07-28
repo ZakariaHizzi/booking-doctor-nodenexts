@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { getMe, getProfile, signOut } from "@/lib/api";
+import { getMe, signOut } from "@/lib/api";
 
 export function useUser({ redirectTo } = {}) {
   const [user, setUser] = useState(null);
@@ -22,8 +22,7 @@ export function useUser({ redirectTo } = {}) {
           return;
         }
 
-        const profileData = await getProfile(me._id);
-        setProfile(profileData);
+        setProfile(me);
       } catch (err) {
         if (redirectTo) router.push(redirectTo);
       }

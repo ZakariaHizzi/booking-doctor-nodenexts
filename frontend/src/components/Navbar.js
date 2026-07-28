@@ -3,12 +3,11 @@
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { getMe, getProfile, signOut } from "@/lib/api";
+import { getMe, signOut } from "@/lib/api";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
@@ -18,13 +17,8 @@ export default function Navbar() {
       try {
         const { user: me } = await getMe();
         setUser(me);
-        if (me) {
-          const data = await getProfile(me._id);
-          setProfile(data);
-        }
       } catch (err) {
         setUser(null);
-        setProfile(null);
       }
       setLoading(false);
     }
@@ -34,7 +28,6 @@ export default function Navbar() {
   const handleSignOut = useCallback(async () => {
     await signOut();
     setUser(null);
-    setProfile(null);
     router.push("/");
   }, []);
 
@@ -84,7 +77,7 @@ export default function Navbar() {
                   href="/dashboard"
                   className="text-sm text-on-surface-variant hover:text-primary"
                 >
-                  {profile?.full_name || user.email}
+                  {user.full_name || user.email}
                 </Link>
                 <button
                   onClick={handleSignOut}
