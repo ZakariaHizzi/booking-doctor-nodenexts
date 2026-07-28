@@ -19,8 +19,7 @@ if (pathname.startsWith("/api/") || pathname.startsWith("/auth/callback")) {
 
   const token = request.cookies.get("token")?.value;
 
-  const isPublicRoute =
-    publicRoutes.has(pathname) || pathname.startsWith("/doctors/");
+  const isPublicRoute = publicRoutes.has(pathname) 
 
   if (!token && !isPublicRoute) {
     const url = request.nextUrl.clone();
