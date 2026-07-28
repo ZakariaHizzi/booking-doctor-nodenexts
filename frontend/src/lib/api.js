@@ -1,5 +1,5 @@
 async function apiFetch(path, options = {}) {
-  const res = await fetch(`http://localhost:5000${path}`, {
+  const res = await fetch(`https://booking-doctor-nodenexts.onrender.com${path}`, {
     ...options,
     credentials: "include",
     headers: {
