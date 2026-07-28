@@ -6,7 +6,6 @@ const publicRoutes = new Set([
   "/",
   "/auth/login",
   "/auth/register",
-  "/auth/callback",
   "/doctors",
   "/doctors/",
 ]);
