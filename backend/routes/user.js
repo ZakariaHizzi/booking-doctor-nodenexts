@@ -6,11 +6,11 @@ import auth from "../auth/middleware.js";
 
 const router = express.Router();
 
-const isProd = process.env.NODE_ENV === "production";
+
 const COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: isProd,
-  sameSite: isProd ? "none" : "lax",
+  secure: true,
+  sameSite:"none" ,
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
 };
