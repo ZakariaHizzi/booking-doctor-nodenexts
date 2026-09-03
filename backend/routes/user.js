@@ -6,11 +6,10 @@ import auth from "../auth/middleware.js";
 
 const router = express.Router();
 
-
 const COOKIE_OPTIONS = {
   httpOnly: true,
   secure: true,
-  sameSite:"none" ,
+  sameSite: "none",
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
 };
@@ -70,7 +69,7 @@ router.post("/auth/signin", async (req, res) => {
       return res.status(400).json({ message: "Password is not correct" });
     }
     const token = jwt.sign(
-      { email: user.email, id: user._id, role: user.role },
+      { email: user.email, id: user._id },
       process.env.SECRET_KEY,
       { expiresIn: "1w" },
     );
@@ -81,7 +80,6 @@ router.post("/auth/signin", async (req, res) => {
         id: user._id,
         full_name: user.full_name,
         email: user.email,
-        role: user.role,
       },
     });
   } catch (error) {
