@@ -25,7 +25,7 @@ const connectDB = async () => {
 
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL],
+    origin: ["https://booking-doctor-nodenexts.vercel.app"],
     credentials: true,
   }),
 );
